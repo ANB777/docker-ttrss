@@ -22,7 +22,7 @@ try {
 }
 catch (PDOException $e) {
     echo 'Database table for mobilize plugin not found, applying schema... ' . PHP_EOL;
-    $schema = file_get_contents('/srv/ttrss-plugin-mobilize.'.$db_type);
+    $schema = file_get_contents('/srv/ttrss-plugin-mobilize.' . $config['DB_TYPE']);
     $schema = preg_replace('/--(.*?);/', '', $schema);
     $schema = preg_replace('/[\r\n]/', ' ', $schema);
     $schema = trim($schema, ' ;');
