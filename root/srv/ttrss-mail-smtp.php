@@ -33,6 +33,6 @@ foreach ($config as $name => $value) {
     if (!is_bool($value) && !in_array($value, ['true', 'false', '0', '1'])) {
         $value = '"' . $value . '"';
     }
-    $contents = $contents . "\n\t" . "define('{$name}', {$value})";
+    $contents = $contents . "\n\t" . "define('{$name}', {$value});";
 }
 file_put_contents($conffile, $contents);
