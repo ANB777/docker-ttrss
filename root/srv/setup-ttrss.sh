@@ -70,6 +70,7 @@ setup_ttrss()
         mkdir -p ${TTRSS_PATH_PLUGINS}
         git clone --depth=1 https://github.com/sepich/tt-rss-mobilize.git ${TTRSS_PATH_PLUGINS}/mobilize
         git clone --depth=1 https://github.com/m42e/ttrss_plugin-feediron.git ${TTRSS_PATH_PLUGINS}/feediron
+        git clone --depth=1 https://git.tt-rss.org/fox/ttrss-mailer-smtp.git ${TTRSS_PATH_PLUGINS}/ttrss-mailer-smtp
 
         mkdir -p ${TTRSS_PATH_THEMES}
         git clone --depth=1 https://github.com/levito/tt-rss-feedly-theme.git ${TTRSS_PATH_THEMES}/levito-feedly-git
@@ -139,6 +140,7 @@ setup_db()
     php -f /srv/ttrss-configure-db.php
     php -f /srv/ttrss-configure.php
     php -f /srv/ttrss-configure-plugin-mobilize.php
+    php -f /srv/ttrss-mailer-smtp.php
 }
 
 setup_nginx
