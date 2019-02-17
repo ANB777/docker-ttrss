@@ -137,6 +137,7 @@ setup_db()
 {
     echo "Setup: Database"
     php -f /srv/ttrss-configure-db.php
+    php -f /srv/ttrss-configure.php
     php -f /srv/ttrss-configure-plugin-mobilize.php
 }
 
