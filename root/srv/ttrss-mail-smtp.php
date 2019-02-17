@@ -28,10 +28,11 @@ $config['SMTP_SKIP_CERT_CHECKS'] = env('SMTP_SKIP_CERT_CHECKS', false);
 // Accept all SSL certificates, use with caution.
 
 $contents = file_get_contents($conffile);
+$contents = $contents . "\n";
 foreach ($config as $name => $value) {
     if (!is_bool($value) && !in_array($value, ['true', 'false', '0', '1'])) {
         $value = '"' . $value . '"';
     }
-    $contents = $contents . "\n\n" . "define('{$name}', {$value})";
+    $contents = $contents . "\n\t" . "define('{$name}', {$value})";
 }
 file_put_contents($conffile, $contents);
