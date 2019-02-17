@@ -32,6 +32,8 @@ $contents = $contents . "\n";
 foreach ($config as $name => $value) {
     if (!is_bool($value) && !in_array($value, ['true', 'false', '0', '1'])) {
         $value = '"' . $value . '"';
+    } elseif(is_bool($value)) {
+        $value = $value ? 'true' : 'false';
     }
     $contents = $contents . "\n\t" . "define('{$name}', {$value});";
 }
