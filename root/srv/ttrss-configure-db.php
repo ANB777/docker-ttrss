@@ -26,7 +26,7 @@ $config = array();
 $config['DB_TYPE'] = $db_type;
 $config['DB_HOST'] = env($ename . '_HOST', $ename . '_PORT_' . $eport . '_TCP_ADDR');
 $db_host_set = !!env($ename . '_HOST');
-$config['DB_PORT'] = env($db_host_set ? $ename : $ename . '_PORT_' . $eport . '_TCP_PORT');
+$config['DB_PORT'] = $db_host_set ? env($ename . '_PORT', $eport) : env($ename . '_PORT_' . $eport . '_TCP_PORT');
 
 // database credentials for this instance
 //   database name (DB_NAME) can be supplied or detaults to "ttrss"
