@@ -140,7 +140,7 @@ setup_db()
     php -f /srv/ttrss-configure-db.php
     php -f /srv/ttrss-configure.php
     php -f /srv/ttrss-configure-plugin-mobilize.php
-    php -f /srv/ttrss-mailer-smtp.php
+    php -f /srv/ttrss-mail-smtp.php
 }
 
 setup_nginx
