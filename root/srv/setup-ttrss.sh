@@ -123,13 +123,14 @@ setup_ttrss()
 
         TTRSS_PLUGINS=
 
-        if (!!env('TTRSS_PLUGINS', '')) {
-            TTRSS_PLUGINS=${TTRSS_PLUGINS}$(env('TTRSS_PLUGINS', ''))", "
+        ENV_PLUGINS=$(env('TTRSS_PLUGINS', ''))
+        if (!!$ENV_PLUGINS) {
+            TTRSS_PLUGINS="${TTRSS_PLUGINS}${ENV_PLUGINS}, "
         fi
 
         # Only if SSL/TLS is enabled: af_zz_imgproxy (Loads insecure images via built-in proxy).
         if [ "$TTRSS_PROTO" = "https" ]; then
-            TTRSS_PLUGINS=${TTRSS_PLUGINS}"af_zz_imgproxy, "
+            TTRSS_PLUGINS="${TTRSS_PLUGINS}af_zz_imgproxy, "
         fi
     fi
 
