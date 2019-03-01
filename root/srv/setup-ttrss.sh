@@ -124,7 +124,7 @@ setup_ttrss()
         TTRSS_PLUGINS=
 
         ENV_PLUGINS=$(env('TTRSS_PLUGINS', ''))
-        if (!!$ENV_PLUGINS) {
+        if [ "$ENV_PLUGINS" != '' ]; then
             TTRSS_PLUGINS="${TTRSS_PLUGINS}${ENV_PLUGINS}, "
         fi
 
