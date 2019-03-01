@@ -115,7 +115,7 @@ setup_ttrss()
     # Check if single user mode is selected
     if [ "$TTRSS_SINGLEUSER" = true ]; then
         echo "Single User mode Selected"
-        sed -i -e "s/.*define('SINGLE_USER_MODE'.*/define('SINGLE_USER_MODE', 'true');/g" ${TTRSS_PATH}/config.php
+        sed -i -e "s/define('SINGLE_USER_MODE'.*/define('SINGLE_USER_MODE', 'true');/g" ${TTRSS_PATH}/config.php
     fi
 
     # Enable additional system plugins.
@@ -135,7 +135,7 @@ setup_ttrss()
 
     echo "Setup: Additional plugins: $TTRSS_PLUGINS"
 
-    sed -i -e "s/.*define('PLUGINS'.*/define('PLUGINS', '${TTRSS_PLUGINS}auth_internal, note, updater');/g" ${TTRSS_PATH}/config.php
+    sed -i -e "s/define('PLUGINS'.*/define('PLUGINS', '${TTRSS_PLUGINS}auth_internal, note, updater');/g" ${TTRSS_PATH}/config.php
 }
 
 setup_db()
