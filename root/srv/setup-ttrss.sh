@@ -123,15 +123,19 @@ setup_ttrss()
 
         TTRSS_PLUGINS=
 
+        if (!!env('TTRSS_PLUGINS', '')) {
+            TTRSS_PLUGINS=${TTRSS_PLUGINS}$(env('TTRSS_PLUGINS', ''))", "
+        fi
+
         # Only if SSL/TLS is enabled: af_zz_imgproxy (Loads insecure images via built-in proxy).
         if [ "$TTRSS_PROTO" = "https" ]; then
-            TTRSS_PLUGINS=${TTRSS_PLUGINS}af_zz_imgproxy
+            TTRSS_PLUGINS=${TTRSS_PLUGINS}"af_zz_imgproxy, "
         fi
     fi
 
     echo "Setup: Additional plugins: $TTRSS_PLUGINS"
 
-    sed -i -e "s/.*define('PLUGINS'.*/define('PLUGINS', '$TTRSS_PLUGINS, auth_internal, note, updater');/g" ${TTRSS_PATH}/config.php
+    sed -i -e "s/.*define('PLUGINS'.*/define('PLUGINS', '${TTRSS_PLUGINS}auth_internal, note, updater');/g" ${TTRSS_PATH}/config.php
 }
 
 setup_db()
