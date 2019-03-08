@@ -70,7 +70,8 @@ setup_ttrss()
         mkdir -p ${TTRSS_PATH_PLUGINS}
         git clone --depth=1 https://github.com/sepich/tt-rss-mobilize.git ${TTRSS_PATH_PLUGINS}/mobilize
         git clone --depth=1 https://github.com/m42e/ttrss_plugin-feediron.git ${TTRSS_PATH_PLUGINS}/feediron
-        git clone --depth=1 https://git.tt-rss.org/fox/ttrss-mailer-smtp.git ${TTRSS_PATH_PLUGINS}/ttrss-mailer-smtp
+        git clone --depth=1 https://git.tt-rss.org/fox/ttrss-mailer-smtp.git ${TTRSS_PATH_PLUGINS}/mailer-smtp
+        git clone --depth=1 https://git.tt-rss.org/fox/ttrss-time-to-read.git ${TTRSS_PATH_PLUGINS}/time-to-read
 
         mkdir -p ${TTRSS_PATH_THEMES}
         git clone --depth=1 https://github.com/levito/tt-rss-feedly-theme.git ${TTRSS_PATH_THEMES}/levito-feedly-git
@@ -81,7 +82,7 @@ setup_ttrss()
     cp ${TTRSS_PATH}/config.php-dist ${TTRSS_PATH}/config.php
 
     # Check if TTRSS_URL is undefined, and if so, use localhost as default.
-    if [ -z ${TTRSS_URL} ]; then
+    if [ -z "${TTRSS_URL}" ]; then
         TTRSS_URL=localhost
     fi
 
@@ -119,7 +120,7 @@ setup_ttrss()
     fi
 
     # Enable additional system plugins.
-    if [ -z ${TTRSS_PLUGINS} ]; then
+    if [ -z "${TTRSS_PLUGINS}" ]; then
 
         TTRSS_PLUGINS=
 
