@@ -66,10 +66,12 @@ try {
     echo 'Connection to database successful' . PHP_EOL;
     // Reached this point => table found, assume db is complete
 
-    // Make sure to set the default theme provided by TT-RSS.
+    // Make sure to set the default theme provided by TT-RSS if ENV['RESET_THEME'] is set.
     // Other themes might break everything after an update, so play safe here.
-    echo 'Resetting theme to default ...' . PHP_EOL;
-    $pdo->query("UPDATE ttrss_user_prefs SET value = '' WHERE pref_name = 'USER_CSS_THEME'");
+    if(!!env('RESET_THEME', false)) {
+        echo 'Resetting theme to default ...' . PHP_EOL;
+        $pdo->query("UPDATE ttrss_user_prefs SET value = '' WHERE pref_name = 'USER_CSS_THEME'");
+    }
 }
 catch (PDOException $e) {
     echo 'Database table not found, applying schema... ' . PHP_EOL;
