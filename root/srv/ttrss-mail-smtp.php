@@ -3,7 +3,7 @@
 
 include '/srv/ttrss-utils.php';
 
-$confpath = env('TTRSS_PATH', '/var/www/ttrss/');
+$confpath = env('TTRSS_PATH', '/var/www/ttrss').'/';
 $conffile = $confpath . 'config.php';
 
 // use config from ttrss config
