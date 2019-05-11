@@ -39,6 +39,10 @@ ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
 
+ENV TTRSS_PATH /var/www/ttrss
+ENV TTRSS_FEED_ICONS_PATH ${TTRSS_PATH}/../feed-icons
+VOLUME ["${TTRSS_FEED_ICONS_PATH}"]
+
 # Clean up.
 RUN set -xe && apk del --progress --purge && rm -rf /var/cache/apk/*
 

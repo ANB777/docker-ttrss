@@ -67,6 +67,10 @@ setup_ttrss()
             git clone --depth=1 ${TTRSS_REPO_URL} ${TTRSS_PATH}
         fi
 
+        rm -rf ${TTRSS_PATH}/feed-icons
+        ln -s ${TTRSS_FEED_ICONS_PATH} ${TTRSS_PATH}/feed-icons
+        chown www-data:www-data ${TTRSS_PATH}/feed-icons
+
         mkdir -p ${TTRSS_PATH_PLUGINS}
         git clone --depth=1 https://github.com/sepich/tt-rss-mobilize.git ${TTRSS_PATH_PLUGINS}/mobilize
         git clone --depth=1 https://github.com/m42e/ttrss_plugin-feediron.git ${TTRSS_PATH_PLUGINS}/feediron
